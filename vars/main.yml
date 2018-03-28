@@ -1,0 +1,4 @@
+---
+# vars file for nodejs
+rpm_base_url: "https://rpm.nodesource.com/setup{{ version }}"
+deb_base_url: "https://deb.nodesource.com/setup{{ version }}"

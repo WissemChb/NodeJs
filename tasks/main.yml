@@ -1,0 +1,11 @@
+---
+# tasks file for nodejs
+- name: " Installing Nodejs et npm in RedHat systems ..."
+  include_tasks: nodejs-RedHat.yml
+  when: ansible_os_family == "RedHat"
+  become: yes
+
+- name: " Installing Nodejs et npm in Debian systems ..."
+  include_tasks: nodejs-Debian.yml
+  when: ansible_os_family == "Debian"
+  become: yes

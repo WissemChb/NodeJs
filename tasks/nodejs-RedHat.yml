@@ -1,0 +1,38 @@
+- name: "Update the system ..."
+  yum:
+    name: "*"
+    state: latest
+  tags: 
+    - system
+
+- name: "Install Development Tools ..."
+  yum:
+   name: "@Development Tools"
+   state: latest
+  tags: 
+    - Development Tools
+    - optional]
+
+- name: "Dowload RPM script ...."
+  get_url:
+    url: "{{ rpm_base_url }}"
+    dest: $HOME
+    mode: 0770
+  tags: 
+    - nodejs
+
+- name: "Install nodejs and NPM package..."
+  shell: "./{{ rpm_base_url | urlsplit('path') }}"
+  args:
+    chdir: $HOME
+  tags:
+    - package
+    - nodejs
+
+- name: "Installing Nodejs et NPM ..."
+  yum:
+    name: nodejs
+    state: latest
+  tags: 
+    - nodejs
+    - npm
