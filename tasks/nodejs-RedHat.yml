@@ -2,6 +2,7 @@
   yum:
     name: "*"
     state: latest
+  become: yes
   tags: 
     - system
 
@@ -9,6 +10,7 @@
   yum:
    name: "@Development Tools"
    state: latest
+  become: yes
   tags: 
     - Development Tools
     - optional]
@@ -18,6 +20,7 @@
     url: "{{ rpm_base_url }}"
     dest: $HOME
     mode: 0770
+  become: yes
   tags: 
     - nodejs
 
@@ -25,6 +28,7 @@
   shell: "./{{ rpm_base_url | urlsplit('path') }}"
   args:
     chdir: $HOME
+  become: yes
   tags:
     - package
     - nodejs
@@ -33,6 +37,7 @@
   yum:
     name: nodejs
     state: latest
+  become: yes
   tags: 
     - nodejs
     - npm
